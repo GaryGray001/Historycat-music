@@ -187,7 +187,7 @@ footer{background:#05050E;border-top:1px solid var(--neon-pink);box-shadow:0 -2p
     <div class="wrap">
       <span class="eyebrow">RETRO-FUTURISM · R2 AUDIO ARCHIVE · ON AIR</span>
       <h1><span class="glitch">霓虹点唱机<span class="g g1" aria-hidden="true">霓虹点唱机</span><span class="g g2" aria-hidden="true">霓虹点唱机</span></span></h1>
-      <p class="lead">一台 1984 年的自动点唱机,在 2077 年的黑夜里持续运转。六卷数字磁带从 Cloudflare R2 缓缓转出,扫描线横陈,霓虹辉光不熄。</p>
+      <p class="lead">一台 1984 年的自动点唱机,在 2077 年的黑夜里持续运转。数字磁带从 Cloudflare R2 缓缓转出,扫描线横陈,霓虹辉光不熄。</p>
       <div class="hero-actions">
         <button class="btn btn-primary" type="button" id="heroPlayAll">▶ 播放全部</button>
         <a class="btn btn-secondary" href="#library">查看曲库</a>
@@ -202,9 +202,9 @@ footer{background:#05050E;border-top:1px solid var(--neon-pink);box-shadow:0 -2p
   <section class="info-strip" aria-label="档案信息">
     <div class="wrap">
       <ul class="chips">
-        <li class="chip">曲目 <b>6</b></li>
-        <li class="chip">格式 <b>MP3 + WAV</b></li>
-        <li class="chip">总量 <b>约 107 MB</b></li>
+        <li class="chip">曲目 <b id="chipCount">3</b></li>
+        <li class="chip">格式 <b>MP3</b></li>
+        <li class="chip">总量 <b>约 15.4 MB</b></li>
         <li class="chip">存储 <b>Cloudflare R2</b></li>
         <li class="chip">风格 <b>复古未来 · 暗色</b></li>
       </ul>
@@ -303,10 +303,7 @@ footer{background:#05050E;border-top:1px solid var(--neon-pink);box-shadow:0 -2p
   var TRACKS = [
     { file:"August 19th (Cinematic Theme) (1).mp3",   name:"Cinematic Theme",           fmt:"MP3", size:"5.2 MB" },
     { file:"August 23rd (Cheerful Instrumental Theme).mp3", name:"Cheerful Instrumental Theme", fmt:"MP3", size:"5.58 MB" },
-    { file:"August 24 (Instrumental Journey).mp3",    name:"Instrumental Journey",      fmt:"MP3", size:"4.63 MB" },
-    { file:"August 28th • Heroic Erhu Theme (1).wav", name:"Heroic Erhu Theme",          fmt:"WAV", size:"28.59 MB" },
-    { file:"August 29th – Piano Reverie.wav",         name:"Piano Reverie",              fmt:"WAV", size:"33.12 MB" },
-    { file:"Journey of September Mountains.wav",      name:"Journey of September Mountains", fmt:"WAV", size:"29.49 MB" }
+    { file:"August 24 (Instrumental Journey).mp3",    name:"Instrumental Journey",      fmt:"MP3", size:"4.63 MB" }
   ];
   function urlOf(t){ return R2 + encodeURIComponent(t.file); }
 
@@ -385,6 +382,7 @@ footer{background:#05050E;border-top:1px solid var(--neon-pink);box-shadow:0 -2p
       trackList.appendChild(li);
     });
     libCount.textContent = "共 " + TRACKS.length + " 卷磁带 · 总长读取中(首次加载元数据后显示)";
+    $("chipCount").textContent = TRACKS.length;
   }
 
   /* ---------- 播放核心 ---------- */
